@@ -7,7 +7,9 @@ public class Quadratic {
 		}else {
 			opensUp=false;
 		}
-		
+		double yInt=c;
+		double horVert=;
+		String vertex="("+;
 	}
 	
 	public static String quadform(int a, int b, int c) {
@@ -104,6 +106,17 @@ public class Quadratic {
 			guess-=((square(guess)-x)/(2*guess));
 		}
 		return round2(guess);
+	}
+	
+	public static double absValue(double absolute) {
+		
+		//returns absolute value of two doubles
+		
+		if (absolute<0) {
+			return absolute*-1;
+		}else {
+			return absolute;
+		}
 	}
 
 }
