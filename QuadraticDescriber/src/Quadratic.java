@@ -7,32 +7,31 @@ public class Quadratic {
 		}else {
 			opensUp=false;
 		}
-		double yInt=c;
-		double horVert=;
-		String vertex="("+;
+		double h= findH(a, b, c);
+		double k=a*square(h)+b*h+c;
+		String vertex="("+h+","+k+")";
 	}
 	
-	public static String quadform(int a, int b, int c) {
+	public static double posQuadForm(double a, double b, double c) {
 		
 		//put in 3 ints a, b, and c, in accordance with quadratic formula
-		//returns a string listing roots (x for y=0)
+		//returns -b + sqrt(b^2-4ac)
 		
 		double square=discriminant(a,b,c);
 		double squareRoot;
-		if(square<0) {
-			return "no real roots";
-		}
 		squareRoot=sqrt(square);
-		double plusRoot=((-b)+squareRoot)/(2*a);
-		double minusRoot=((-b)-squareRoot)/(2*a);
-		if(plusRoot!=minusRoot) {
-			double maxRoot=round2(max(plusRoot, minusRoot));
-			double minRoot=round2(min(plusRoot, minusRoot));
-			String roots=minRoot+" and "+maxRoot;
-			return roots;
-		}else {
-			return plusRoot+"";
-		}
+		return round2((-b)+squareRoot)/(2*a);
+	}
+	
+	public static double negQuadForm(double a, double b, double c) {
+		
+		//put in 3 ints a, b, and c, in accordance with quadratic formula
+		//returns -b - sqrt(b^2-4ac)
+		
+		double square=discriminant(a,b,c);
+		double squareRoot;
+		squareRoot=sqrt(square);
+		return round2((-b)-squareRoot)/(2*a);
 	}
 	
 	public static double discriminant (double a, double b, double c) {
@@ -116,6 +115,20 @@ public class Quadratic {
 			return absolute*-1;
 		}else {
 			return absolute;
+		}
+	}
+	
+	public static double findH(double a, double b, double c) {
+		return -b/(2*a);
+	}
+	
+	public static boolean opens(double a) {
+		if (a>0) {
+			return true;
+		} else if (a<0) {
+			return false;
+		} else {
+			throw new IllegalArgumentException("Not a quadratic");
 		}
 	}
 
