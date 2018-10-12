@@ -9,20 +9,27 @@ public class Quadratic {
 		}
 		double h= findH(a, b, c);
 		double k=a*square(h)+b*h+c;
-		double posRoot = posQuadForm(a, b, c);
-		double negRoot = negQuadForm(a, b, c);
+		String roots;
+		double posRoot;
+		double negRoot;
+		if(discriminant(a, b, c)<0) {
+			roots="No real roots.";
+		}else {
+			posRoot = posQuadForm(a, b, c);
+			negRoot = negQuadForm(a, b, c);
+			if (posRoot==negRoot) {
+				roots=""+posRoot;
+			}else {
+				roots=posRoot+" and "+negRoot;
+			}
+		}
 		System.out.println("Description of the graph of: ");
 		System.out.println("y= "+a+" x^2 + "+b+" x + "+c);
 		System.out.println();
 		System.out.println("Opens: "+opens);
 		System.out.println("Axis of symmetry: "+h);
 		System.out.println("Vertex: ("+h+", "+k+")");
-		System.out.print("x-intercept(s): ");
-		if (posRoot==negRoot) {
-			System.out.println(posRoot);
-		} else {
-			System.out.println(posRoot+" and "+negRoot);
-		}
+		System.out.println("x-intercept(s): "+roots);
 		System.out.println("y-intercept: "+c);
 	}
 	
