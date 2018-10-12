@@ -1,15 +1,29 @@
 
 public class Quadratic {
-	public static String quadrDescriber(double a, double b, double c) {
-		boolean opensUp;
+	public static void quadrDescriber(double a, double b, double c) {
+		String opens;
 		if (a>0) {
-			opensUp=true;
+			opens="Up";
 		}else {
-			opensUp=false;
+			opens="Down";
 		}
 		double h= findH(a, b, c);
 		double k=a*square(h)+b*h+c;
-		String vertex="("+h+","+k+")";
+		double posRoot = posQuadForm(a, b, c);
+		double negRoot = negQuadForm(a, b, c);
+		System.out.println("Description of the graph of: ");
+		System.out.println("y= "+a+" x^2 + "+b+" x + "+c);
+		System.out.println();
+		System.out.println("Opens: "+opens);
+		System.out.println("Axis of symmetry: "+h);
+		System.out.println("Vertex: ("+h+", "+k+")");
+		System.out.print("x-intercept(s): ");
+		if (posRoot==negRoot) {
+			System.out.println(posRoot);
+		} else {
+			System.out.println(posRoot+" and "+negRoot);
+		}
+		System.out.println("y-intercept: "+c);
 	}
 	
 	public static double posQuadForm(double a, double b, double c) {
